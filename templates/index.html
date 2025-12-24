@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Boston Housing Price Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="container">
+        <h2>🏠 Boston Housing Price Prediction</h2>
+
+        <form action="/predict" method="post">
+            <div class="form-group"><label>CRIM</label><input type="number" step="any" name="CRIM" placeholder="Crime rate" required></div>
+            <div class="form-group"><label>ZN</label><input type="number" step="any" name="ZN" placeholder="Residential land" required></div>
+            <div class="form-group"><label>INDUS</label><input type="number" step="any" name="INDUS" placeholder="Industrial area" required></div>
+
+            <div class="form-group">
+                <label>CHAS</label>
+                <select name="CHAS" required>
+                    <option value="0">0 (No)</option>
+                    <option value="1">1 (Yes)</option>
+                </select>
+            </div>
+
+            <div class="form-group"><label>NOX</label><input type="number" step="any" name="NOX" placeholder="Nitric oxide level" required></div>
+            <div class="form-group"><label>RM</label><input type="number" step="any" name="RM" placeholder="Avg number of rooms" required></div>
+            <div class="form-group"><label>AGE</label><input type="number" step="any" name="AGE" placeholder="% houses built before 1940" required></div>
+            <div class="form-group"><label>DIS</label><input type="number" step="any" name="DIS" placeholder="Weighted distances" required></div>
+            <div class="form-group"><label>RAD</label><input type="number" step="any" name="RAD" placeholder="Accessibility index" required></div>
+            <div class="form-group"><label>TAX</label><input type="number" step="any" name="TAX" placeholder="Property tax" required></div>
+            <div class="form-group"><label>PTRATIO</label><input type="number" step="any" name="PTRATIO" placeholder="Pupil-teacher ratio" required></div>
+            <div class="form-group"><label>BLACK</label><input type="number" step="any" name="BLACK" placeholder="Proportion of blacks" required></div>
+            <div class="form-group"><label>LSTAT</label><input type="number" step="any" name="LSTAT" placeholder="% lower status population" required></div>
+
+            <button type="submit">Predict Price</button>
+        </form>
+
+        {% if prediction_text %}
+        <div class="result">{{ prediction_text }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
